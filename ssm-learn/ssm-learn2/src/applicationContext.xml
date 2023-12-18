@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 创建Bean， 交给Spring管理 -->
+    <bean id="test" class="dao.TestDaoImpl"/>
+
+    <!--  交给Spring,创建Bean  -->
+    <bean id="testDIDao" class="dao.TestDIDaoImpl"/>
+    <!--  交给Spring,不new依赖，让spring注入，从spring获取 -->
+    <bean id="testDIService" class="service.TestDIServiceImpl">
+        <!-- constructor-arg指明构造注入， index指明注入位置，ref指明注入内容-->
+        <constructor-arg index="0" ref="testDIDao"/>
+    </bean>
+
+    <!--  交给spring管理，不new依赖，从spring获取依赖，让spring注入依赖-->
+    <bean id="testDIService2" class="service.TestDIServiceImpl1">
+        <!-- properyu表明使用setter注入，name标准注入位置， ref指示注入的值-->
+        <property name="testDIDao" ref="testDIDao" />
+    </bean>
+
+
+</beans>
