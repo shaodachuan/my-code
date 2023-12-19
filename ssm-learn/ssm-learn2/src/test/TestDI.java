@@ -19,5 +19,6 @@ public class TestDI {
 
         TestDIService testDIService1 = (TestDIService) context.getBean("testDIService2");
         testDIService1.sayHello();
+        System.out.println(testDIService1);
     }
 }

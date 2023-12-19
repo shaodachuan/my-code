@@ -19,6 +19,10 @@
     <bean id="testDIService2" class="service.TestDIServiceImpl1">
         <!-- properyu表明使用setter注入，name标准注入位置， ref指示注入的值-->
         <property name="testDIDao" ref="testDIDao" />
+        <property name="name" value="red2222" />
+        <property name="age" value="12" />
+        <property name="money" value="12" />
+        <property name="male" value="false"/>
     </bean>
 
 

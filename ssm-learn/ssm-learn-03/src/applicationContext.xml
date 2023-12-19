@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 构造方法实例化Bean-->
+    <bean id="constructorBean" class="instance.BeanClass"/>
+
+    <!-- 让Spring通过工厂，创建BeanClass -->
+    <bean id="staticFactoryBean" class="instance.StaticBeanFactory" factory-method="createBean" />
+
+    <bean id="beanFactoy" class="instance.BeanFactory" />
+    <!-- 指示spring，使用实例工厂，创建Bean-->
+    <bean id="factoryBean" factory-bean="beanFactoy" factory-method="cteateBean"></bean>
+
+
+    <bean id="singletonBean" class="instance.BeanClass" scope="singleton"/>
+    <bean id="prototypeBean" class="instance.BeanClass" scope="prototype"/>
+
+
+    <!-- 配置User-->
+    <bean id="user1" class="assemble.User">
+        <constructor-arg name="name" value="xiaoming"/>
+        <constructor-arg name="hobbyList">
+            <list>
+                <value>唱歌</value>
+                <value>跳舞</value>
+            </list>
+        </constructor-arg>
+        <constructor-arg name="residenceMap">
+            <map>
+                <entry key="dalian" value="大连"></entry>
+                <entry key="beijing" value="北京"></entry>
+            </map>
+        </constructor-arg>
+        <constructor-arg name="aliasSet">
+            <set>
+                <value>xiaoming</value>
+                <value>xiaohong</value>
+            </set>
+        </constructor-arg>
+        <constructor-arg name="array">
+            <array>
+                <value>xiaoming</value>
+                <value>xiaohong</value>
+            </array>
+        </constructor-arg>
+    </bean>
+</beans>
