@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="com.mybatis.mapper.UserMapper">
+
+    <!-- 插入用户信息 -->
+    <insert id="insertUser" >
+        insert into t_user values(null,'admin','123456',23,'男','admin@qq.com')
+    </insert>
+
+    <!-- selectUserById -->
+    <select id="selectUserById">
+        select * from t_user where id = #{id}
+    </select>
+
+    <select id="getAllUsers">
+        <!-- 使用List -->
+        select * from t_user where id = #{arg0[0].id} and username = #{arg0[1].username}
+    </select>
+
+
+    <!--User selectOneUser(User user); - 实体类参数-->
+    <select id="selecctByPojo">
+        select * from t_user where age = #{age} and username = #{username}
+    </select>
+
+    <!-- User selectOneByMap(Map<String, Object> map); - map参数 -->
+    <select id="selectOneByMap">
+        select * from t_user where username = #{username} and age = #{age}
+    </select>
+
+    <!-- User selectByOneParam(List<User> list); - 一个字面量参数 -->
+    <select id="selectByOneParam">
+        select * from t_user where id = #{list[0].id}
+    </select>
+
+    <!--User getUserByUsername(String username); - 一个字面量username-->
+    <select id="getUserByUsername">
+        select * from t_user where username = #{usernamea}
+    </select>
+
+    <!--User getUserByParams(String username, User user); - 多个参数-->
+    <select id="getUserByParams">
+        select * from t_user where username = #{username} and id = #{user.id}
+    </select>
+
+    <!-- Object getUserById(Integer id); - 结果处理 -->
+    <select id="getPojoById" resultType="map">
+        select * from t_user where id = #{id}
+    </select>
+
+
+    <!-- List<Map<String, Object>> getAllPojo(); - 结果处理-->
+    <select id="getAllPojo">
+        select * from t_user
+    </select>
+</mapper>

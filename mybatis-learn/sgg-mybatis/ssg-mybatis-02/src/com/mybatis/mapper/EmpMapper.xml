@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="com.mybatis.mapper.EmpMapper">
+
+    <!--    Emp getEmpById(Integer id); -->
+    <select id="getEmpById1">
+        select id, emp_name empName, email from emp where id = #{id}
+    </select>
+
+    <select id="getEmpById2">
+        select * from emp where id = #{id}
+    </select>
+
+    <select id="getEmpById3" resultMap="empResMap">
+        select * from emp
+    </select>
+
+    <resultMap id="empResMap" type="com.mybatis.pojo.Emp" autoMapping="true">
+        <id column="id" property="id"/>
+        <result column="emp_name" property="empName"/>
+    </resultMap>
+
+
+    <!-- typeAlias 别名-->
+    <select id="getEmpAlias" resultType="emp">
+        select * from emp where id = #{id}
+    </select>
+</mapper>
