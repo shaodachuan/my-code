@@ -3,7 +3,7 @@ package com.mybatis.mapper;
 import com.mybatis.pojo.Emp;
 
 /**
- * 哈哈哈哈
+ * red2222
  *
  * @author red2222
  * @date 2024/2/5
@@ -19,5 +19,8 @@ public interface EmpMapper {
 
     // 别名
     Emp getEmpAlias(Integer id);
+
+    // 自增主键
+    Integer insertEmp(Emp emp);
 
 }

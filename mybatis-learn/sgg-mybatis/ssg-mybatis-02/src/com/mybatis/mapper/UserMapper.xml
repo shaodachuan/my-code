@@ -58,4 +58,25 @@
     <select id="getAllPojo">
         select * from t_user
     </select>
+
+
+    <!-- List<User> getUserLike(String username); -->
+    <select id="getUserLike1">
+        select * from t_user where username like concat('%', #{username}, '%')
+    </select>
+
+    <!-- List<User> getUserLike2(String username);  -->
+    <select id="getUserLike2">
+        select * from t_user where username = #{username}
+    </select>
+
+    <!-- List<User> getUserLike2(String username); -->
+    <select id="getUserLike3">
+        select * from t_user where username like "%"#{username}"%"
+    </select>
+
+    <!-- String getUserItem(@Param("field") String field,@Param("id") Integer id); -->
+    <select id="getUserItem">
+        select ${field} from t_user where id = #{id}
+    </select>
 </mapper>

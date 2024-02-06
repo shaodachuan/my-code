@@ -1,6 +1,8 @@
 package com.mybatis.test;
 
+import com.mybatis.mapper.EmpMapper;
 import com.mybatis.mapper.UserMapper;
+import com.mybatis.pojo.Emp;
 import com.mybatis.pojo.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -85,9 +87,11 @@ public class MybatisTest {
         // 1. sessionFactory、Session
         SqlSession sqlSession = getSession();
         // 2. Mapper
-        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-        List<Map> allPojo = userMapper.getAllPojo();
-        System.out.println(allPojo);
+        Emp emp = new Emp(null, "张飞", "张飞@qq.com");
+        EmpMapper empMapper = sqlSession.getMapper(EmpMapper.class);
+        empMapper.insertEmp(emp);
+
+        System.out.println(emp);
     }
 
 }

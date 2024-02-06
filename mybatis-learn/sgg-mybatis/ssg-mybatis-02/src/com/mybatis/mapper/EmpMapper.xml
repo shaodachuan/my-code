@@ -30,4 +30,16 @@
     <select id="getEmpAlias" resultType="emp">
         select * from emp where id = #{id}
     </select>
+
+    <!-- Emp insertEmp(Emp emp); -->
+    <insert id="insertEmp" useGeneratedKeys="true" keyProperty="id">
+        insert into emp values(null, #{empName},#{email}, null)
+    </insert>
+
+    <insert id="insertEmp2">
+        <selectKey order="BEFORE" keyProperty="id">
+            select   序列.nextval from dual
+        </selectKey>
+        insert into emp values(null, #{empName},#{email}, null)
+    </insert>
 </mapper>

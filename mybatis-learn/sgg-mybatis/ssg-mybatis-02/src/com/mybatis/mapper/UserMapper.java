@@ -44,4 +44,16 @@ public interface UserMapper {
     // 结果处理 - 多行数据
     List<Map> getAllPojo();
 
+    // 模糊查询 - concat() 方式
+    List<User> getUserLike1(String username);
+
+    // 模糊查询 - ${}拼串方式
+    List<User> getUserLike2(String username);
+
+    // 模糊查询 - ""方式
+    List<User> getUserLike3(String username);
+
+    //  表字段 - 根据参数传入
+    String getUserItem(@Param("field") String field,@Param("id") Integer id);
+
 }
